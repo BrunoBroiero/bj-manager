@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>BroieroInstaller.Smoke</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/Models.cs" />
+    <Compile Include="../../src/Strings.cs" />
+    <Compile Include="../../src/SteamLibrary.cs" />
+    <Compile Include="../../src/GitHubCatalog.cs" />
+    <Compile Include="../../src/ModInstaller.cs" />
+    <Compile Include="../../src/SelfUpdater.cs" />
+  </ItemGroup>
+</Project>

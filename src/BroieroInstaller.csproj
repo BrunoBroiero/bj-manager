@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>BroieroInstaller</AssemblyName>
+    <RootNamespace>BroieroInstaller</RootNamespace>
+    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+    <Version>1.0.0</Version>
+    <Authors>Bruno Broiero</Authors>
+    <Product>Broiero Installer</Product>
+    <Description>Installs and updates Bruno Broiero's screen-reader mods from GitHub.</Description>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <!-- Single self-contained exe: nothing to install besides the file itself. -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+</Project>
