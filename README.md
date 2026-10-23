@@ -78,12 +78,12 @@ GitHub Actions; the installer updates itself from those releases.
 
 ### Para jugadores
 
-1. Bajá `BJManager.exe` desde [Releases](../../releases/latest). Es un solo archivo; no hay
+1. Descarga `BJManager.exe` desde [Releases](../../releases/latest). Es un solo archivo; no hay
    que instalar nada más.
-2. Abrilo. Muestra cada mod, el juego al que pertenece y si está instalado en tu copia del juego.
-   Los juegos de Steam se encuentran solos; si alguno no aparece, usá **Elegir carpeta del juego**.
-3. Elegí un mod y apretá **Instalar** (o **Actualizar**). Los archivos van a la carpeta del juego.
-   Abrí el juego desde Steam como siempre.
+2. Ábrelo. Muestra cada mod, el juego al que pertenece y si está instalado en tu copia del juego.
+   Los juegos de Steam se encuentran solos; si alguno no aparece, usa **Elegir carpeta del juego**.
+3. Elige un mod y pulsa **Instalar** (o **Actualizar**). Los archivos van a la carpeta del juego.
+   Abre el juego desde Steam como siempre.
 
 Todo son controles comunes de Windows, así que NVDA, JAWS y Narrador lo leen entero: flechas en la
 lista, Tab a los botones, y cada resultado llega en un diálogo. El instalador habla en español si
