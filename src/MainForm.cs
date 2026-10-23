@@ -360,16 +360,16 @@ public sealed class MainForm : Form
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         if (answer != DialogResult.Yes) return;
 
+        // A modal window takes the main one out of reach while the new exe comes down; on success
+        // the application exits from inside it, on failure it closes itself and reports here.
         SetBusy(true, L.T("selfUpdate.downloading"));
-        try
-        {
-            await SelfUpdater.ApplyAsync(_catalog, newer, DownloadProgress(SelfUpdater.AssetName), CancellationToken.None);
-            // On success the application is already exiting.
-        }
-        catch (Exception ex)
+        using var updating = new UpdateDialog(newer.Version,
+            progress => SelfUpdater.ApplyAsync(_catalog, newer, progress, CancellationToken.None));
+        updating.ShowDialog(this);
+        if (updating.Error is { } error)
         {
             SetBusy(false, L.T("ready"));
-            MessageBox.Show(this, L.F("selfUpdate.failed", ex.Message), L.T("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(this, L.F("selfUpdate.failed", error.Message), L.T("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

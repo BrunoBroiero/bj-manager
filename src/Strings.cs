@@ -59,6 +59,8 @@ public static class L
 
         ["selfUpdate.ask"] = ("BJ Manager {0} is available (you have {1}). Update now?", "Hay una versión nueva de BJ Manager: {0} (tienes la {1}). ¿Actualizar ahora?"),
         ["selfUpdate.downloading"] = ("Downloading the new installer...", "Descargando el instalador nuevo..."),
+        ["selfUpdate.title"] = ("Updating", "Actualizando"),
+        ["selfUpdate.body"] = ("Downloading BJ Manager {0}. Please wait: the installer will close and open again on its own.", "Descargando BJ Manager {0}. Espera un momento: el instalador se cerrará y volverá a abrir solo."),
         ["selfUpdate.restart"] = ("The installer will close and open again updated.", "El instalador se va a cerrar y abrir de nuevo actualizado."),
         ["selfUpdate.failed"] = ("The installer could not update itself: {0}", "El instalador no pudo actualizarse: {0}"),
         ["selfUpdate.done"] = ("BJ Manager is now version {0}.", "BJ Manager ya está en la versión {0}."),
