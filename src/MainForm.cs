@@ -160,7 +160,7 @@ public sealed class MainForm : Form
             foreach (var entry in entries)
             {
                 Resolve(entry);
-                var item = new ListViewItem(new[] { entry.Manifest.Name, entry.Manifest.Game, StatusText(entry) }) { Tag = entry };
+                var item = new ListViewItem(new[] { NameText(entry), entry.Manifest.Game, StatusText(entry) }) { Tag = entry };
                 _list.Items.Add(item);
             }
             SetStatus(entries.Count == 0 ? L.T("noMods") : L.F("loaded", entries.Count));
@@ -176,8 +176,11 @@ public sealed class MainForm : Form
         }
         if (_list.Items.Count > 0)
         {
-            _list.Items[0].Selected = true;
-            _list.Items[0].Focused = true;
+            // Land on the first mod with an update waiting, so it is the first thing heard.
+            var first = _list.Items.Cast<ListViewItem>().FirstOrDefault(i => (i.Tag as ModEntry)?.State == InstallState.UpdateAvailable)
+                        ?? _list.Items[0];
+            first.Selected = true;
+            first.Focused = true;
         }
         _list.Focus();
         UpdateButtons();
@@ -203,6 +206,10 @@ public sealed class MainForm : Form
         else entry.State = entry.Release is null ? InstallState.NoRelease : InstallState.NotInstalled;
     }
 
+    /// <summary>The first column, which a screen reader says first: an update waiting goes before the name.</summary>
+    private static string NameText(ModEntry e) =>
+        e.State == InstallState.UpdateAvailable ? L.F("name.update", e.Manifest.Name) : e.Manifest.Name;
+
     private static string StatusText(ModEntry e) => e.State switch
     {
         InstallState.GameNotFound => L.T("state.gameNotFound"),
@@ -220,6 +227,7 @@ public sealed class MainForm : Form
         foreach (ListViewItem item in _list.Items)
         {
             if (!ReferenceEquals(item.Tag, entry)) continue;
+            item.SubItems[0].Text = NameText(entry);
             item.SubItems[2].Text = StatusText(entry);
         }
         UpdateButtons();

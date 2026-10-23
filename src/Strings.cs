@@ -37,6 +37,7 @@ public static class L
         ["state.updateAvailable"] = ("Installed: {0}. Update available: {1}.", "Instalado: {0}. Actualización disponible: {1}."),
         ["state.byHand"] = ("Installed by hand. Available: {0}.", "Instalado a mano. Disponible: {0}."),
         ["state.byHandNoRelease"] = ("Installed by hand.", "Instalado a mano."),
+        ["name.update"] = ("Update available: {0}", "Actualización disponible: {0}"),
 
         ["loading"] = ("Looking for mods on GitHub...", "Buscando mods en GitHub..."),
         ["loaded"] = ("{0} mods found.", "{0} mods encontrados."),

@@ -9,7 +9,7 @@
     <AssemblyName>BroieroInstaller</AssemblyName>
     <RootNamespace>BroieroInstaller</RootNamespace>
     <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Bruno Broiero</Authors>
     <Product>Broiero Installer</Product>
     <Description>Installs and updates Bruno Broiero's screen-reader mods from GitHub.</Description>
