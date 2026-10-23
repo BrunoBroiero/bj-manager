@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace BroieroInstaller;
+namespace BJManager;
 
 /// <summary>The mod.json a mod repository carries at its root. Everything the installer needs to
 /// know about a mod lives here, so publishing a new mod means publishing a new repo with one.</summary>

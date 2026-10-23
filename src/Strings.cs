@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace BroieroInstaller;
+namespace BJManager;
 
 /// <summary>User-facing text, in Spanish or English after the Windows display language.</summary>
 public static class L
@@ -10,7 +10,7 @@ public static class L
 
     private static readonly Dictionary<string, (string en, string es)> Table = new()
     {
-        ["title"] = ("Broiero Installer", "Broiero Installer"),
+        ["title"] = ("BJ Manager", "BJ Manager"),
         ["intro"] = ("Screen-reader mods by Bruno Broiero. Pick a mod from the list and use the buttons below it.",
                      "Mods de accesibilidad de Bruno Broiero. Elegí un mod de la lista y usá los botones de abajo."),
         ["col.mod"] = ("Mod", "Mod"),
@@ -57,11 +57,11 @@ public static class L
         ["browse.wrong"] = ("That folder does not contain {0}.", "Esa carpeta no contiene {0}."),
         ["noSelection"] = ("Choose a mod from the list first.", "Primero elegí un mod de la lista."),
 
-        ["selfUpdate.ask"] = ("Broiero Installer {0} is available (you have {1}). Update now?", "Hay una versión nueva de Broiero Installer: {0} (tenés la {1}). ¿Actualizar ahora?"),
+        ["selfUpdate.ask"] = ("BJ Manager {0} is available (you have {1}). Update now?", "Hay una versión nueva de BJ Manager: {0} (tenés la {1}). ¿Actualizar ahora?"),
         ["selfUpdate.downloading"] = ("Downloading the new installer...", "Descargando el instalador nuevo..."),
         ["selfUpdate.restart"] = ("The installer will close and open again updated.", "El instalador se va a cerrar y abrir de nuevo actualizado."),
         ["selfUpdate.failed"] = ("The installer could not update itself: {0}", "El instalador no pudo actualizarse: {0}"),
-        ["selfUpdate.done"] = ("Broiero Installer is now version {0}.", "Broiero Installer ya está en la versión {0}."),
+        ["selfUpdate.done"] = ("BJ Manager is now version {0}.", "BJ Manager ya está en la versión {0}."),
 
         ["error"] = ("Error", "Error"),
         ["done"] = ("Done", "Listo"),

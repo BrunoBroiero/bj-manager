@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace BroieroInstaller;
+namespace BJManager;
 
 /// <summary>Finds the mods: every public repository of the owner that carries a mod.json at its
 /// root, and the latest release of each.</summary>
@@ -25,7 +25,7 @@ public sealed class GitHubCatalog
     public static HttpClient NewHttpClient()
     {
         var http = new HttpClient { Timeout = TimeSpan.FromMinutes(10) };
-        http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("BroieroInstaller", SelfUpdater.CurrentVersion));
+        http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("BJManager", SelfUpdater.CurrentVersion));
         http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
         http.DefaultRequestHeaders.Add("X-GitHub-Api-Version", "2022-11-28");
         return http;

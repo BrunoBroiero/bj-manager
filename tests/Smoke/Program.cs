@@ -1,8 +1,8 @@
 // Smoke test, no window: discover the mods, find the games, install the first release that has
 // one into a fake game folder, then uninstall it.  Usage: dotnet run -- <fake game folder>
-using BroieroInstaller;
+using BJManager;
 
-var fakeGame = args.Length > 0 ? args[0] : Path.Combine(Path.GetTempPath(), "BroieroInstaller-smoke");
+var fakeGame = args.Length > 0 ? args[0] : Path.Combine(Path.GetTempPath(), "BJManager-smoke");
 using var http = GitHubCatalog.NewHttpClient();
 var catalog = new GitHubCatalog(http);
 
@@ -40,4 +40,6 @@ Console.WriteLine($"after uninstall, left in fake game folder: {string.Join(", "
 Console.WriteLine($"  by hand now: {ModInstaller.LooksInstalledByHand(toInstall)}");
 var selfUpdate = await SelfUpdater.CheckAsync(catalog, CancellationToken.None);
 Console.WriteLine($"self-update available: {(selfUpdate is null ? "no" : selfUpdate.Version)}");
+var legacy = await catalog.LatestReleaseAsync("BrunoBroiero/broiero-installer", "BroieroInstaller.exe", CancellationToken.None);
+Console.WriteLine($"legacy self-update path (old repo name, old asset name): {(legacy is null ? "nothing" : legacy.Version)}");
 return left.Count == 1 ? 0 : 2;

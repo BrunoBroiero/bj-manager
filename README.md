@@ -1,4 +1,4 @@
-# Broiero Installer
+# BJ Manager
 
 Installs, updates and removes Bruno Broiero's screen-reader mods for Steam games, from GitHub, in
 one accessible window. / Instala, actualiza y quita los mods de accesibilidad de Bruno Broiero
@@ -12,7 +12,7 @@ para juegos de Steam, desde GitHub, en una ventana accesible.
 
 ### For players
 
-1. Download `BroieroInstaller.exe` from [Releases](../../releases/latest). It is a single file;
+1. Download `BJManager.exe` from [Releases](../../releases/latest). It is a single file;
    nothing else to install.
 2. Run it. It lists every mod, the game it is for, and whether it is installed in your copy of
    the game. Steam games are found on their own; if one is not, use **Choose game folder**.
@@ -65,7 +65,7 @@ tells players to extract by hand.
 ### Building
 
 ```powershell
-.\build.ps1          # dist\BroieroInstaller.exe, self-contained, single file
+.\build.ps1          # dist\BJManager.exe, self-contained, single file
 dotnet run --project tests\Smoke   # no window: discover, install into a temp folder, uninstall
 ```
 
@@ -78,7 +78,7 @@ GitHub Actions; the installer updates itself from those releases.
 
 ### Para jugadores
 
-1. Bajá `BroieroInstaller.exe` desde [Releases](../../releases/latest). Es un solo archivo; no hay
+1. Bajá `BJManager.exe` desde [Releases](../../releases/latest). Es un solo archivo; no hay
    que instalar nada más.
 2. Abrilo. Muestra cada mod, el juego al que pertenece y si está instalado en tu copia del juego.
    Los juegos de Steam se encuentran solos; si alguno no aparece, usá **Elegir carpeta del juego**.
@@ -101,7 +101,7 @@ descritos en la sección en inglés.
 ### Compilar
 
 ```powershell
-.\build.ps1          # dist\BroieroInstaller.exe, autocontenido, un solo archivo
+.\build.ps1          # dist\BJManager.exe, autocontenido, un solo archivo
 dotnet run --project tests\Smoke   # sin ventana: descubre, instala en una carpeta temporal, desinstala
 ```
 

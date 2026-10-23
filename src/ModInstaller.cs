@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.IO.Compression;
 
-namespace BroieroInstaller;
+namespace BJManager;
 
 /// <summary>Puts a mod's release zip into the game folder, and takes it out again.</summary>
 public static class ModInstaller
@@ -42,7 +42,7 @@ public static class ModInstaller
         var release = entry.Release ?? throw new InvalidOperationException("no release");
         var gamePath = entry.GamePath ?? throw new InvalidOperationException("no game path");
 
-        var tempDir = Path.Combine(Path.GetTempPath(), "BroieroInstaller", Guid.NewGuid().ToString("N"));
+        var tempDir = Path.Combine(Path.GetTempPath(), "BJManager", Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(tempDir);
         var zipPath = Path.Combine(tempDir, release.AssetName);
         try

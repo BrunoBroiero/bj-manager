@@ -1,4 +1,4 @@
-namespace BroieroInstaller;
+namespace BJManager;
 
 internal static class Program
 {

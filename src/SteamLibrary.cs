@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
 
-namespace BroieroInstaller;
+namespace BJManager;
 
 /// <summary>Finds where Steam keeps its games, through the registry and libraryfolders.vdf.</summary>
 public static class SteamLibrary

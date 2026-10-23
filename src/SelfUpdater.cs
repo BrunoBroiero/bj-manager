@@ -1,13 +1,13 @@
 using System.Diagnostics;
 using System.Reflection;
 
-namespace BroieroInstaller;
+namespace BJManager;
 
 /// <summary>Keeps the installer itself current from its own GitHub releases.</summary>
 public static class SelfUpdater
 {
-    public const string Repo = "BrunoBroiero/broiero-installer";
-    public const string AssetName = "BroieroInstaller.exe";
+    public const string Repo = "BrunoBroiero/bj-manager";
+    public const string AssetName = "BJManager.exe";
 
     public static string CurrentVersion
     {
@@ -36,9 +36,9 @@ public static class SelfUpdater
     public static async Task ApplyAsync(GitHubCatalog catalog, ReleaseInfo release, IProgress<(long done, long total)> progress, CancellationToken ct)
     {
         var exe = Environment.ProcessPath ?? throw new InvalidOperationException("cannot locate the running exe");
-        var tempDir = Path.Combine(Path.GetTempPath(), "BroieroInstaller");
+        var tempDir = Path.Combine(Path.GetTempPath(), "BJManager");
         Directory.CreateDirectory(tempDir);
-        var newExe = Path.Combine(tempDir, $"BroieroInstaller-{release.Version}.exe");
+        var newExe = Path.Combine(tempDir, $"BJManager-{release.Version}.exe");
         await catalog.DownloadAsync(release.AssetUrl, newExe, progress, ct);
 
         var script = Path.Combine(tempDir, "update.cmd");

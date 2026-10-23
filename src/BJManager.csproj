@@ -6,12 +6,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>BroieroInstaller</AssemblyName>
-    <RootNamespace>BroieroInstaller</RootNamespace>
+    <AssemblyName>BJManager</AssemblyName>
+    <RootNamespace>BJManager</RootNamespace>
     <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>Bruno Broiero</Authors>
-    <Product>Broiero Installer</Product>
+    <Product>BJ Manager</Product>
     <Description>Installs and updates Bruno Broiero's screen-reader mods from GitHub.</Description>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
     <!-- Single self-contained exe: nothing to install besides the file itself. -->

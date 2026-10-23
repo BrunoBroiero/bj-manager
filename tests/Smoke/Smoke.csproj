@@ -5,7 +5,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>BroieroInstaller.Smoke</RootNamespace>
+    <RootNamespace>BJManager.Smoke</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="../../src/Models.cs" />

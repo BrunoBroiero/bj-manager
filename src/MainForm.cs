@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace BroieroInstaller;
+namespace BJManager;
 
 /// <summary>One window: the mods in a list, and the buttons that act on the selected one. Plain
 /// Windows controls only, so NVDA and JAWS read every piece without help.</summary>
