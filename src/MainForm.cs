@@ -12,7 +12,7 @@ public sealed class MainForm : Form
     private AppSettings _settings = SettingsStore.Load();
 
     private readonly Label _intro = new();
-    private readonly ListView _list = new();
+    private readonly ModListBox _list = new();
     private readonly TextBox _description = new();
     private readonly Button _install = new();
     private readonly Button _uninstall = new();
@@ -32,7 +32,7 @@ public sealed class MainForm : Form
         BuildLayout();
     }
 
-    private ModEntry? Selected => _list.SelectedItems.Count > 0 ? _list.SelectedItems[0].Tag as ModEntry : null;
+    private ModEntry? Selected => (_list.SelectedItem as ModRow)?.Entry;
 
     // ----- layout -------------------------------------------------------------------------------
 
@@ -63,17 +63,16 @@ public sealed class MainForm : Form
         _intro.MaximumSize = new Size(780, 0);
         _intro.Margin = new Padding(0, 0, 0, 8);
 
-        _list.View = View.Details;
-        _list.FullRowSelect = true;
-        _list.HideSelection = false;
-        _list.MultiSelect = false;
         _list.Dock = DockStyle.Fill;
         _list.AccessibleName = L.T("list.name");
-        _list.Columns.Add(L.T("col.mod"), 180);
-        _list.Columns.Add(L.T("col.game"), 240);
-        _list.Columns.Add(L.T("col.status"), 340);
         _list.SelectedIndexChanged += (_, _) => UpdateButtons();
-        _list.ItemActivate += async (_, _) => await InstallAsync();
+        _list.DoubleClick += async (_, _) => await InstallAsync();
+        _list.KeyDown += async (_, e) =>
+        {
+            if (e.KeyCode != Keys.Enter) return;
+            e.Handled = true;
+            await InstallAsync();
+        };
         _list.Margin = new Padding(0, 0, 0, 8);
 
         _description.ReadOnly = true;
@@ -160,8 +159,7 @@ public sealed class MainForm : Form
             foreach (var entry in entries)
             {
                 Resolve(entry);
-                var item = new ListViewItem(new[] { NameText(entry), entry.Manifest.Game, StatusText(entry) }) { Tag = entry };
-                _list.Items.Add(item);
+                _list.Items.Add(Row(entry));
             }
             SetStatus(entries.Count == 0 ? L.T("noMods") : L.F("loaded", entries.Count));
         }
@@ -177,10 +175,8 @@ public sealed class MainForm : Form
         if (_list.Items.Count > 0)
         {
             // Land on the first mod with an update waiting, so it is the first thing heard.
-            var first = _list.Items.Cast<ListViewItem>().FirstOrDefault(i => (i.Tag as ModEntry)?.State == InstallState.UpdateAvailable)
-                        ?? _list.Items[0];
-            first.Selected = true;
-            first.Focused = true;
+            var first = _list.Items.Cast<ModRow>().ToList().FindIndex(r => r.Entry.State == InstallState.UpdateAvailable);
+            _list.SelectedIndex = first < 0 ? 0 : first;
         }
         _list.Focus();
         UpdateButtons();
@@ -206,7 +202,9 @@ public sealed class MainForm : Form
         else entry.State = entry.Release is null ? InstallState.NoRelease : InstallState.NotInstalled;
     }
 
-    /// <summary>The first column, which a screen reader says first: an update waiting goes before the name.</summary>
+    /// <summary>What the list says for a mod, an update waiting before anything else.</summary>
+    private static ModRow Row(ModEntry e) => new(e, NameText(e), e.Manifest.Game, StatusText(e));
+
     private static string NameText(ModEntry e) =>
         e.State == InstallState.UpdateAvailable ? L.F("name.update", e.Manifest.Name) : e.Manifest.Name;
 
@@ -224,11 +222,12 @@ public sealed class MainForm : Form
     private void RefreshRow(ModEntry entry)
     {
         Resolve(entry);
-        foreach (ListViewItem item in _list.Items)
+        for (var i = 0; i < _list.Items.Count; i++)
         {
-            if (!ReferenceEquals(item.Tag, entry)) continue;
-            item.SubItems[0].Text = NameText(entry);
-            item.SubItems[2].Text = StatusText(entry);
+            if (_list.Items[i] is not ModRow row || !ReferenceEquals(row.Entry, entry)) continue;
+            var wasSelected = _list.SelectedIndex == i;
+            _list.Items[i] = Row(entry);
+            if (wasSelected) _list.SelectedIndex = i;
         }
         UpdateButtons();
     }

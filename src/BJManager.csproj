@@ -9,7 +9,7 @@
     <AssemblyName>BJManager</AssemblyName>
     <RootNamespace>BJManager</RootNamespace>
     <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
     <Authors>Bruno Broiero</Authors>
     <Product>BJ Manager</Product>
     <Description>Installs and updates Bruno Broiero's screen-reader mods from GitHub.</Description>
